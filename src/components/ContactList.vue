@@ -21,6 +21,7 @@
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Email</th>
+                    <th></th>
                 </thead>
                 <tbody>
                     <tr v-for="(contact, index) in contacts" :key="index">
@@ -28,6 +29,9 @@
                         <td>{{contact.firstName}}</td>
                         <td>{{contact.lastName}}</td>
                         <td>{{contact.email}}</td>
+                        <td>
+                        <button@click="removeContact(contact)"> Remove </button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -60,7 +64,12 @@ export default {
         addContact(){
             this.contacts.push(this.newContact);
             this.newContact={}
+        },
+        removeContact(contact){
+            let index = this.contacts.indexOf(contact);
+            this.contacts.splice(index, 1);
+    
         }
     }
-}
+};
 </script>
