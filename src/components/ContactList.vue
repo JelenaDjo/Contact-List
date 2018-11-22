@@ -15,6 +15,7 @@
         
 
         <ContactsTable  :contactsList="contacts"/>
+        <ContactDetails :contact="routeContact" />
             
     </div>
 
@@ -23,10 +24,12 @@
 <script>
 
 import ContactsTable from './ContactsTable'
+import ContactDetails from './ContactDetails';
 
 export default {
     components: {
-        ContactsTable
+        ContactsTable,
+        ContactDetails
     },
     
     data(){
@@ -37,11 +40,11 @@ export default {
                 email: ''
             },
             contacts: [
-                {firstName: 'John', lastName: 'Doe', email: 'example@example.com'},
-                {firstName: 'Jack', lastName: 'Smith', email: 'example@example.com'},
-                {firstName: 'Susan', lastName: 'Hart', email: 'example@example.com'},
-                {firstName: 'Sofi', lastName: 'Shepard', email: 'example@example.com'},
-                {firstName: 'Jasmin', lastName: 'Krew', email: 'example@example.com'}
+                {id:1, firstName: 'John', lastName: 'Doe', email: 'example@example.com'},
+                {id:2,firstName: 'Jack', lastName: 'Smith', email: 'example@example.com'},
+                {id:3, firstName: 'Susan', lastName: 'Hart', email: 'example@example.com'},
+                {id:4, firstName: 'Sofi', lastName: 'Shepard', email: 'example@example.com'},
+                {id:5, firstName: 'Jasmin', lastName: 'Krew', email: 'example@example.com'}
 
             ]
         }
@@ -55,6 +58,12 @@ export default {
             let index = this.contacts.indexOf(contact);
             this.contacts.splice(index, 1);
     
+        }
+    },
+    computed: {
+        routeContact(){ 
+          let findedContact =  this.contacts.find(contact=> contact.id == this.$route.params.id) // na ovaj nacin uvek izvlcimo parametar iz rute
+            return findedContact
         }
     }
 };

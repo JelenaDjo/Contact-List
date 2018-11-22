@@ -1,11 +1,11 @@
 <template>
-    <h1> Contact Details </h1>
+    <h5> {{contact}} </h5>
 </template>
 
 
 
 <script>
 export default {
-    
+    props:['contact']
 }
 </script>
