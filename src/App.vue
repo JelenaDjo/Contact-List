@@ -1,12 +1,15 @@
 <template>
   <div id="app">
+    <NavBar />
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App" />
     <HelloWorld msg="Walking get's too boring when you learn how to fly!"/>
-    <ContactList />
+    <!-- <ContactList /> -->
     <!-- <BlogPost :title="parentTitle"  -->
       <!-- @callParentFunction="parentFunction" -->
     <!-- /> : su skrcenica od v-bind: -->
+<router-view> </router-view>
+
   </div>
 </template>
 
@@ -14,6 +17,8 @@
 import HelloWorld from './components/HelloWorld.vue'
 import ContactList from './components/ContactList.vue'
 import BlogPost from './components/BlogPost.vue'
+import NavBar from './components/NavBar.vue'
+
 export default {
 
   name: 'app',
@@ -25,7 +30,8 @@ export default {
   components: {
     HelloWorld,
     ContactList,
-    BlogPost
+    BlogPost,
+    NavBar
   },
   methods: {
     parentFunction (name, age) {
